@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-space-grotesk);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-ring: var(--ring);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #0b0d12;
+  --surface: #f7f7f9;
+  --surface-foreground: #0b0d12;
+  --muted: #f0f0f3;
+  --muted-foreground: #5b5f6b;
+  --border: #e6e6ea;
+  --accent: #6d5bff;
+  --accent-foreground: #ffffff;
+  --ring: #6d5bff;
+
+  /* Gradient accent, used sparingly (hero glow, primary CTAs, highlights). */
+  --gradient-from: #6d5bff;
+  --gradient-via: #3f8cff;
+  --gradient-to: #22d3ee;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+}
+
+.dark {
+  --background: #0a0a0d;
+  --foreground: #f4f4f6;
+  --surface: #131318;
+  --surface-foreground: #f4f4f6;
+  --muted: #17171d;
+  --muted-foreground: #9a9aa5;
+  --border: #232329;
+  --accent: #8b7bff;
+  --accent-foreground: #0a0a0d;
+  --ring: #8b7bff;
+
+  --gradient-from: #8b7bff;
+  --gradient-via: #5b9bff;
+  --gradient-to: #22d3ee;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    background: linear-gradient(
+      95deg,
+      var(--gradient-from),
+      var(--gradient-via) 55%,
+      var(--gradient-to)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .bg-gradient-accent {
+    background: linear-gradient(
+      95deg,
+      var(--gradient-from),
+      var(--gradient-via) 55%,
+      var(--gradient-to)
+    );
+  }
+
+  .container-page {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  .heading-1 {
+    font-size: clamp(2.25rem, 1.6rem + 3vw, 4.25rem);
+    line-height: 1.05;
+    font-weight: 600;
+  }
+
+  .heading-2 {
+    font-size: clamp(1.75rem, 1.4rem + 1.6vw, 2.75rem);
+    line-height: 1.1;
+    font-weight: 600;
+  }
+
+  .heading-3 {
+    font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.75rem);
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  .body-lg {
+    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+    line-height: 1.6;
+  }
+
+  .eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+}
