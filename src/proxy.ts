@@ -5,7 +5,7 @@ import type { Database } from "@/lib/supabase/types";
 
 const LOGIN_PATH = "/admin/login";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   let response = NextResponse.next({ request });
 
   const supabase = createServerClient<Database>(getSupabaseUrl(), getSupabaseAnonKey(), {
