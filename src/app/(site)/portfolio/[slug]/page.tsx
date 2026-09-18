@@ -8,6 +8,7 @@ import { getPortfolioItemBySlug } from "@/lib/queries/portfolio";
 import { getMediaById, getPublicMediaUrl } from "@/lib/queries/media";
 import { getSupabaseUrl } from "@/lib/supabase/env";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import { toJsonLd } from "@/lib/seo/json-ld";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { paragraphs, formatDate } from "@/lib/utils";
@@ -55,7 +56,7 @@ export default async function PortfolioItemPage({ params }: Props) {
     <article className="py-16 sm:py-20">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: toJsonLd(jsonLd) }}
       />
       <Container className="max-w-3xl">
         <Link

@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { getContactInfo, getSiteSettings } from "@/lib/queries/site";
+import { toJsonLd } from "@/lib/seo/json-ld";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -27,7 +28,7 @@ export async function OrganizationJsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+      dangerouslySetInnerHTML={{ __html: toJsonLd(json) }}
     />
   );
 }
